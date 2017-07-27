@@ -1,5 +1,6 @@
 require "marionette/version"
+require "marionette/aws/service"
+require "marionette/aws/task"
 
 module Marionette
-  # Your code goes here...
 end

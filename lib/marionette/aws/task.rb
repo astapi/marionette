@@ -16,7 +16,9 @@ module Marionette
         client.list_task_definition_families.families
       end
 
-      def run_task(task)
+      def run_task(cluster_name, task_name)
+        container_instance_arns = client.list_container_instances(cluster: cluster_name).container_instance_arns
+        client.start_task cluster: cluster_name, task_definition: task_name, container_instances: container_instance_arns
       end
 
       def update_task(task_name, options = {})
