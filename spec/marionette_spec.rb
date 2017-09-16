@@ -3,7 +3,7 @@ require 'spec_helper'
 describe Marionette do
   context 'version' do
     it 'has a version number' do
-      expect(Marionette::VERSION).not_to be '0.1.0'
+      expect(Marionette::VERSION).not_to be '0.1.1'
     end
   end
 
