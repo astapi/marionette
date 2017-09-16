@@ -23,7 +23,10 @@ module Marionette
 
       def update_task(task_name, options = {})
         # get latest revision
-        latest_revision = client.list_task_definitions(family_prefix: task_name).to_h[:task_definition_arns].last.split('/').last
+        latest_revision = client.list_task_definitions({
+          family_prefix: task_name,
+          sort: "DESC",
+          max_results: 1}).to_h[:task_definition_arns].last.split('/').last
 
         # get now container definition
         container_definitions = client.describe_task_definition(task_definition: latest_revision).task_definition.to_h[:container_definitions]
